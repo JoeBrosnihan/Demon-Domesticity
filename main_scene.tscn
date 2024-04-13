@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwl4l0u85mxgx"]
+
+[ext_resource type="Texture2D" uid="uid://dyy7jr42bkwub" path="res://assets/antioch.png" id="1_6d7k0"]
+[ext_resource type="Texture2D" uid="uid://7atc5d1y5r8c" path="res://assets/man-screaming.png" id="2_8lhka"]
+[ext_resource type="Script" path="res://player.gd" id="2_en0md"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f3vp6"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(132, 38)
+texture = ExtResource("1_6d7k0")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(208, -22)
+script = ExtResource("2_en0md")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_8lhka")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+scale = Vector2(5, 5)
+shape = SubResource("CircleShape2D_f3vp6")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
