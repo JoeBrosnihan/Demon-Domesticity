@@ -21,6 +21,9 @@ func _physics_process(delta):
 
 	# Debug output to check motion values
 	print("Motion vector: ", motion)
+	
+	if motion.x != 0:
+		find_child("Visual").scale.x = sign(motion.x)
 
 	# Update velocity
 	velocity = motion  # Directly set velocity to motion vector
