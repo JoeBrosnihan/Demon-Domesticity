@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwl4l0u85mxgx"]
+[gd_scene load_steps=6 format=3 uid="uid://cwl4l0u85mxgx"]
 
 [ext_resource type="Texture2D" uid="uid://dyy7jr42bkwub" path="res://assets/antioch.png" id="1_6d7k0"]
 [ext_resource type="Script" path="res://player.gd" id="2_en0md"]
 [ext_resource type="Texture2D" uid="uid://bvvm6v746gnh8" path="res://assets/Matt_Daemon.png" id="3_kek8y"]
+[ext_resource type="AudioStream" uid="uid://cm0y28g7m7mce" path="res://assets/Hells_Kitchen_Draft_1.mp3" id="4_21oky"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f3vp6"]
 
@@ -29,3 +30,7 @@ zoom = Vector2(2, 2)
 position = Vector2(-7, -85)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_kek8y")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_21oky")
+autoplay = true
