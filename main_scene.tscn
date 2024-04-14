@@ -16,12 +16,11 @@
 material = SubResource("CanvasItemMaterial_ilde6")
 
 [node name="Map" type="Sprite2D" parent="."]
-position = Vector2(132, 38)
 scale = Vector2(0.63, 0.63)
 texture = ExtResource("1_s5ggj")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(56, -69)
+position = Vector2(174, 36)
 script = ExtResource("2_en0md")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
@@ -29,7 +28,13 @@ scale = Vector2(3, 1.5)
 shape = SubResource("CircleShape2D_f3vp6")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-zoom = Vector2(2, 2)
+position = Vector2(0, -68)
+zoom = Vector2(1.5, 1.5)
+limit_left = -500
+limit_top = -500
+limit_right = 500
+limit_bottom = 500
+editor_draw_limits = true
 
 [node name="Visual" type="Node2D" parent="CharacterBody2D"]
 
