@@ -3,6 +3,8 @@ extends CharacterBody2D
 # Speed at which the character moves.
 var speed: float = 150.0
 
+signal attack_initiated
+
 func _physics_process(delta):
 	var motion = Vector2.ZERO
 	
@@ -15,6 +17,9 @@ func _physics_process(delta):
 		motion.y += 1
 	if Input.is_action_pressed("ui_up"):
 		motion.y -= 1
+		
+	if Input.is_action_pressed("attack"):
+		attack_initiated.emit()
 
 	# Normalize the motion vector to ensure consistent movement speed in all directions.
 	motion = motion.normalized() * speed
