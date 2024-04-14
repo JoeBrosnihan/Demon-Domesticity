@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxkpuw7if2kfq"
-path="res://.godot/imported/Summon_Circle.png-30301260e8de8eab51b89392cec2b5ad.ctex"
+uid="uid://qmv4vcttfs3u"
+path="res://.godot/imported/TorchFire_1.png-4f273906146603c7f54b0488ac1ad641.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Summon_Circle.png"
-dest_files=["res://.godot/imported/Summon_Circle.png-30301260e8de8eab51b89392cec2b5ad.ctex"]
+source_file="res://assets/TorchFire_1.png"
+dest_files=["res://.godot/imported/TorchFire_1.png-4f273906146603c7f54b0488ac1ad641.ctex"]
 
 [params]
 

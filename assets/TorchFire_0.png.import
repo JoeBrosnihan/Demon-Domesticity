@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c284qpe5p7k1q"
-path="res://.godot/imported/Matt_Fight.png-39f663662d5507ab720656a8ed30886a.ctex"
+uid="uid://bmlk0hpgnor45"
+path="res://.godot/imported/TorchFire_0.png-af07d1d797158ee1988645040d5e2fff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Matt_Fight.png"
-dest_files=["res://.godot/imported/Matt_Fight.png-39f663662d5507ab720656a8ed30886a.ctex"]
+source_file="res://assets/TorchFire_0.png"
+dest_files=["res://.godot/imported/TorchFire_0.png-af07d1d797158ee1988645040d5e2fff.ctex"]
 
 [params]
 
