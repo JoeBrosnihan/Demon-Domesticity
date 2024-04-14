@@ -18,9 +18,6 @@ func _physics_process(delta):
 
 	# Normalize the motion vector to ensure consistent movement speed in all directions.
 	motion = motion.normalized() * speed
-
-	# Debug output to check motion values
-	print("Motion vector: ", motion)
 	
 	var anim = "stand" if motion == Vector2.ZERO else "walk"
 	find_child("Visual").find_child("AnimatedSprite2D").play(anim)

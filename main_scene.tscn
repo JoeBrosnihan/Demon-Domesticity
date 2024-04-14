@@ -57,7 +57,7 @@ size = Vector2(1336.91, 60.7937)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tdvqq"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Game" type="Node2D"]
 material = SubResource("CanvasItemMaterial_ilde6")
 
 [node name="Entities" type="Node2D" parent="."]
@@ -65,16 +65,19 @@ z_index = 1
 y_sort_enabled = true
 
 [node name="Rat" type="RigidBody2D" parent="Entities"]
+lock_rotation = true
 script = ExtResource("10_qh35g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Entities/Rat"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("11_wijhs")
-offset = Vector2(0, -39)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Rat"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_idb8p")
+
+[node name="Visual" type="Node2D" parent="Entities/Rat"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Entities/Rat/Visual"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_wijhs")
+offset = Vector2(0, -39)
 
 [node name="Player" type="CharacterBody2D" parent="Entities"]
 position = Vector2(174, 36)
@@ -161,6 +164,7 @@ stream = ExtResource("4_21oky")
 autoplay = true
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(0, 57)
 lock_rotation = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
