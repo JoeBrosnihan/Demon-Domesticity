@@ -1,23 +1,112 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwl4l0u85mxgx"]
+[gd_scene load_steps=16 format=3 uid="uid://cwl4l0u85mxgx"]
 
-[ext_resource type="Texture2D" uid="uid://dyy7jr42bkwub" path="res://assets/antioch.png" id="1_6d7k0"]
+[ext_resource type="Texture2D" uid="uid://l2c7y1qinh00" path="res://assets/House.png" id="1_s5ggj"]
 [ext_resource type="Texture2D" uid="uid://7atc5d1y5r8c" path="res://assets/man-screaming.png" id="2_8lhka"]
 [ext_resource type="Script" path="res://player.gd" id="2_en0md"]
 [ext_resource type="Texture2D" uid="uid://bvvm6v746gnh8" path="res://assets/Matt_Daemon.png" id="3_kek8y"]
+[ext_resource type="Texture2D" uid="uid://vfd8r0cyab5d" path="res://assets/Matt_Walk_0.png" id="4_5fqrh"]
 [ext_resource type="AudioStream" uid="uid://cm0y28g7m7mce" path="res://assets/Hells_Kitchen_Draft_1.mp3" id="4_21oky"]
+[ext_resource type="Texture2D" uid="uid://dnd6morrlwdog" path="res://assets/Matt_Walk_1.png" id="5_l7m7n"]
+[ext_resource type="Texture2D" uid="uid://c3elbi8jboqjm" path="res://assets/Matt_Walk_2.png" id="6_3xd00"]
+[ext_resource type="Texture2D" uid="uid://nacaka1bxvkf" path="res://assets/Matt_Walk_3.png" id="7_ynv1w"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ilde6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1n0nd"]
+size = Vector2(887.302, 44.4444)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5n6wt"]
+size = Vector2(1336.91, 60.7937)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f3vp6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2xwxc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_kek8y")
+}],
+"loop": true,
+"name": &"stand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_5fqrh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_l7m7n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3xd00")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ynv1w")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tdvqq"]
 
 [node name="Node2D" type="Node2D"]
+material = SubResource("CanvasItemMaterial_ilde6")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(132, 38)
-texture = ExtResource("1_6d7k0")
+[node name="Map" type="Sprite2D" parent="."]
+scale = Vector2(0.63, 0.63)
+texture = ExtResource("1_s5ggj")
+
+[node name="Colliders" type="Node2D" parent="Map"]
+
+[node name="Collider" type="StaticBody2D" parent="Map/Colliders"]
+scale = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Colliders/Collider"]
+position = Vector2(18.2539, -190.476)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_1n0nd")
+
+[node name="Collider2" type="StaticBody2D" parent="Map/Colliders"]
+position = Vector2(-69.8413, -41.2698)
+scale = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Colliders/Collider2"]
+position = Vector2(149.206, -195)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_5n6wt")
+
+[node name="Collider2" type="StaticBody2D" parent="Map/Colliders/Collider2"]
+position = Vector2(-41.2699, 944.445)
+scale = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Colliders/Collider2/Collider2"]
+position = Vector2(165.079, -200)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_5n6wt")
+
+[node name="Collider3" type="StaticBody2D" parent="Map/Colliders"]
+position = Vector2(-601.587, 141.27)
+rotation = -1.43641
+scale = Vector2(0.999999, 0.999999)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Colliders/Collider3"]
+position = Vector2(-16.6207, 31.0787)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_5n6wt")
+
+[node name="Collider4" type="StaticBody2D" parent="Map/Colliders"]
+position = Vector2(682.54, 193.651)
+rotation = -1.64934
+scale = Vector2(0.999999, 0.999999)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Colliders/Collider4"]
+position = Vector2(-16.6207, 31.0787)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_5n6wt")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(208, -22)
+position = Vector2(174, 36)
 script = ExtResource("2_en0md")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
@@ -25,14 +114,29 @@ scale = Vector2(3, 1.5)
 shape = SubResource("CircleShape2D_f3vp6")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-zoom = Vector2(2, 2)
+position = Vector2(0, -68)
+zoom = Vector2(1.5, 1.5)
+limit_left = -500
+limit_top = -500
+limit_right = 500
+limit_bottom = 500
+limit_smoothed = true
+position_smoothing_enabled = true
+editor_draw_limits = true
 
 [node name="Visual" type="Node2D" parent="CharacterBody2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/Visual"]
+[node name="Standing" type="Sprite2D" parent="CharacterBody2D/Visual"]
+visible = false
 position = Vector2(-7, -85)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_kek8y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D/Visual"]
+position = Vector2(-7, -85)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_2xwxc")
+animation = &"walk"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_21oky")

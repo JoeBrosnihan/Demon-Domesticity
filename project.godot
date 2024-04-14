@@ -15,6 +15,10 @@ run/main_scene="res://main_scene.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [input]
 
 ui_right={
@@ -32,3 +36,4 @@ ui_right={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.427451, 0.0392157, 0.027451, 1)
