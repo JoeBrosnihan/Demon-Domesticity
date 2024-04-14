@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # Speed at which the character moves.
-var speed: float = 200.0
+var speed: float = 150.0
 
 func _physics_process(delta):
 	var motion = Vector2.ZERO
@@ -21,6 +21,9 @@ func _physics_process(delta):
 
 	# Debug output to check motion values
 	print("Motion vector: ", motion)
+	
+	var anim = "stand" if motion == Vector2.ZERO else "walk"
+	find_child("Visual").find_child("AnimatedSprite2D").play(anim)
 	
 	if motion.x != 0:
 		find_child("Visual").scale.x = sign(motion.x)
