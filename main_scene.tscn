@@ -1,23 +1,27 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwl4l0u85mxgx"]
+[gd_scene load_steps=9 format=3 uid="uid://cwl4l0u85mxgx"]
 
-[ext_resource type="Texture2D" uid="uid://dyy7jr42bkwub" path="res://assets/antioch.png" id="1_6d7k0"]
+[ext_resource type="Texture2D" uid="uid://l2c7y1qinh00" path="res://assets/House.png" id="1_s5ggj"]
 [ext_resource type="Texture2D" uid="uid://7atc5d1y5r8c" path="res://assets/man-screaming.png" id="2_8lhka"]
 [ext_resource type="Script" path="res://player.gd" id="2_en0md"]
 [ext_resource type="Texture2D" uid="uid://bvvm6v746gnh8" path="res://assets/Matt_Daemon.png" id="3_kek8y"]
 [ext_resource type="AudioStream" uid="uid://cm0y28g7m7mce" path="res://assets/Hells_Kitchen_Draft_1.mp3" id="4_21oky"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ilde6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f3vp6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tdvqq"]
 
 [node name="Node2D" type="Node2D"]
+material = SubResource("CanvasItemMaterial_ilde6")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Map" type="Sprite2D" parent="."]
 position = Vector2(132, 38)
-texture = ExtResource("1_6d7k0")
+scale = Vector2(0.63, 0.63)
+texture = ExtResource("1_s5ggj")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(208, -22)
+position = Vector2(56, -69)
 script = ExtResource("2_en0md")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
