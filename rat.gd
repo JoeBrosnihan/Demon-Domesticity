@@ -15,7 +15,7 @@ var taking_damage = false
 func _ready():
 	print("getting player")
 	# Assuming the player node is named "Player" and is at the root of your scene
-	player = get_node("/root/Game/Entities/Player")
+	player = get_node("/root/Dungeon/Entities/Player")
 	print("player:", player)
 	sprite = find_child("Visual")
 	original_color = sprite.modulate

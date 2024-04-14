@@ -441,3 +441,14 @@ shape = SubResource("CapsuleShape2D_idb8p")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_78yj6")
 offset = Vector2(0, -39)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="RatSpawn1" type="StaticBody2D" parent="Node2D"]
+position = Vector2(-356, -260)
+
+[node name="RatSpawn2" type="StaticBody2D" parent="Node2D"]
+position = Vector2(-16, -268)
+
+[node name="RatSpawn3" type="StaticBody2D" parent="Node2D"]
+position = Vector2(400, -270)
