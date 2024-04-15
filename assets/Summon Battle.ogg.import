@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dehvmio5ch614"
+path="res://.godot/imported/Summon Battle.ogg-cf22302268ee2121bc0375692d6394f0.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Summon Battle.ogg"
+dest_files=["res://.godot/imported/Summon Battle.ogg-cf22302268ee2121bc0375692d6394f0.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

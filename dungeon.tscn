@@ -15,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://xi4enwyaen62" path="res://assets/Dungeon.png" id="9_uvdhx"]
 [ext_resource type="Script" path="res://WizardEyes.gd" id="9_w8x6i"]
 [ext_resource type="Texture2D" uid="uid://ch2o0bdtmo5eu" path="res://assets/Eyes_1.png" id="10_bqt0t"]
-[ext_resource type="AudioStream" uid="uid://cm0y28g7m7mce" path="res://assets/Hells_Kitchen_Draft_1.mp3" id="10_lrsj0"]
 [ext_resource type="Texture2D" uid="uid://d1sfest7ta2ph" path="res://assets/Eyes_2.png" id="11_1ek3b"]
 [ext_resource type="Texture2D" uid="uid://7atc5d1y5r8c" path="res://assets/man-screaming.png" id="11_j5hk5"]
 [ext_resource type="Texture2D" uid="uid://q6lnxpe4l1kd" path="res://assets/Timer.png" id="12_yw0ln"]
@@ -24,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://qmv4vcttfs3u" path="res://assets/TorchFire_1.png" id="14_ncl1j"]
 [ext_resource type="Texture2D" uid="uid://cxkpuw7if2kfq" path="res://assets/Summon_Circle_0.png" id="15_wp4um"]
 [ext_resource type="Texture2D" uid="uid://bsicgn1wpmqk7" path="res://assets/Summon_Circle_1.png" id="16_pwx17"]
+[ext_resource type="AudioStream" uid="uid://dehvmio5ch614" path="res://assets/Summon Battle.ogg" id="23_b00h3"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ilde6"]
 
@@ -437,7 +437,7 @@ animation = &"summon"
 autoplay = "summon"
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("10_lrsj0")
+stream = ExtResource("23_b00h3")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2(0, 57)
