@@ -1,25 +1,20 @@
-[gd_scene load_steps=21 format=3 uid="uid://cwl4l0u85mxgx"]
+[gd_scene load_steps=22 format=3 uid="uid://cwl4l0u85mxgx"]
 
 [ext_resource type="Script" path="res://main_scene.gd" id="1_m25uy"]
 [ext_resource type="Texture2D" uid="uid://l2c7y1qinh00" path="res://assets/House.png" id="1_s5ggj"]
-[ext_resource type="Texture2D" uid="uid://7atc5d1y5r8c" path="res://assets/man-screaming.png" id="2_8lhka"]
-[ext_resource type="Script" path="res://player.gd" id="2_en0md"]
+[ext_resource type="Script" path="res://player_kitchen.gd" id="2_q3nm1"]
 [ext_resource type="Texture2D" uid="uid://bvvm6v746gnh8" path="res://assets/Matt_Daemon.png" id="3_kek8y"]
 [ext_resource type="Texture2D" uid="uid://vfd8r0cyab5d" path="res://assets/Matt_Walk_0.png" id="4_5fqrh"]
-[ext_resource type="AudioStream" uid="uid://cm0y28g7m7mce" path="res://assets/Hells_Kitchen_Draft_1.mp3" id="4_21oky"]
 [ext_resource type="Texture2D" uid="uid://dnd6morrlwdog" path="res://assets/Matt_Walk_1.png" id="5_l7m7n"]
 [ext_resource type="Texture2D" uid="uid://dgk0cjprrvjus" path="res://assets/Matt_Cook.png" id="5_pf2tv"]
 [ext_resource type="Texture2D" uid="uid://c3elbi8jboqjm" path="res://assets/Matt_Walk_2.png" id="6_3xd00"]
 [ext_resource type="Texture2D" uid="uid://nacaka1bxvkf" path="res://assets/Matt_Walk_3.png" id="7_ynv1w"]
 [ext_resource type="Script" path="res://AttackArea2D.gd" id="9_18u7f"]
-[ext_resource type="Script" path="res://rat.gd" id="10_qh35g"]
-[ext_resource type="Texture2D" uid="uid://324eqdvaocw8" path="res://assets/Rat.png" id="11_wijhs"]
+[ext_resource type="Script" path="res://KitchenAppliance.gd" id="9_jctj6"]
+[ext_resource type="AudioStream" uid="uid://c4w1472sqmes" path="res://assets/Sizzling Egg.wav" id="10_gf45j"]
+[ext_resource type="AudioStream" uid="uid://dlilskf0f8w5u" path="res://assets/Hell's Kitchen.ogg" id="12_cikmr"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ilde6"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_idb8p"]
-radius = 4.5
-height = 68.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2xwxc"]
 animations = [{
@@ -63,13 +58,15 @@ height = 44.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d1ni1"]
 size = Vector2(200, 200)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4sng3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3osog"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1n0nd"]
 size = Vector2(887.302, 44.4444)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5n6wt"]
 size = Vector2(1336.91, 60.7937)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_tdvqq"]
 
 [node name="Game" type="Node2D"]
 material = SubResource("CanvasItemMaterial_ilde6")
@@ -80,26 +77,9 @@ z_index = 1
 y_sort_enabled = true
 scale = Vector2(1, 1.04912)
 
-[node name="Rat" type="RigidBody2D" parent="Entities"]
-lock_rotation = true
-script = ExtResource("10_qh35g")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Rat"]
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_idb8p")
-
-[node name="Visual" type="Node2D" parent="Entities/Rat"]
-
-[node name="Sprite2D" type="Sprite2D" parent="Entities/Rat/Visual"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("11_wijhs")
-offset = Vector2(0, -39)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Entities/Rat/Visual/Sprite2D"]
-
 [node name="Player" type="CharacterBody2D" parent="Entities"]
 position = Vector2(174, 36)
-script = ExtResource("2_en0md")
+script = ExtResource("2_q3nm1")
 
 [node name="Camera2D" type="Camera2D" parent="Entities/Player"]
 position = Vector2(0, -68)
@@ -132,6 +112,26 @@ script = ExtResource("9_18u7f")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Player/AttackArea2D"]
 position = Vector2(0, -80)
 shape = SubResource("RectangleShape2D_d1ni1")
+
+[node name="Fridge" type="StaticBody2D" parent="Entities"]
+position = Vector2(-205, -166.806)
+script = ExtResource("9_jctj6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Fridge"]
+position = Vector2(-3, -18.1104)
+shape = SubResource("RectangleShape2D_4sng3")
+
+[node name="Stove" type="StaticBody2D" parent="Entities"]
+position = Vector2(98, -198.261)
+script = ExtResource("9_jctj6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Stove"]
+shape = SubResource("RectangleShape2D_3osog")
+
+[node name="EggSizzle" type="AudioStreamPlayer2D" parent="Entities/Stove"]
+position = Vector2(-98, 198.261)
+scale = Vector2(1, 0.95318)
+stream = ExtResource("10_gf45j")
 
 [node name="Map" type="Sprite2D" parent="."]
 scale = Vector2(0.63, 0.63)
@@ -178,25 +178,24 @@ position = Vector2(-16.6207, 31.0787)
 shape = SubResource("RectangleShape2D_5n6wt")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_21oky")
+stream = ExtResource("12_cikmr")
 autoplay = true
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(0, 57)
-lock_rotation = true
+[node name="FridgeLabel" type="RichTextLabel" parent="."]
+visible = false
+offset_left = -299.0
+offset_top = -102.0
+offset_right = -69.0
+offset_bottom = 198.0
+text = "Breakfast time! Come over here and press \"F\" to grab an egg."
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-shape = SubResource("CircleShape2D_tdvqq")
+[node name="StoveLabel" type="RichTextLabel" parent="."]
+visible = false
+offset_left = -5.0
+offset_top = -104.0
+offset_right = 225.0
+offset_bottom = 196.0
+text = "Nice! Now come over here and press \"F\" to fry the egg."
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-scale = Vector2(0.02, 0.02)
-texture = ExtResource("2_8lhka")
-
-[node name="SummonsButton" type="Button" parent="."]
-offset_left = -23.0
-offset_top = 87.0
-offset_right = 119.0
-offset_bottom = 118.0
-text = "Accept Summons"
-
-[connection signal="pressed" from="SummonsButton" to="." method="_on_summons_button_pressed"]
+[connection signal="interacted" from="Entities/Fridge" to="." method="_on_fridge_interacted"]
+[connection signal="interacted" from="Entities/Stove" to="." method="_on_stove_interacted"]
