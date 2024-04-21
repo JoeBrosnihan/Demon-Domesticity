@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cheyj7321aybh"
-path="res://.godot/imported/Matt_Attack_0.png-886fd911ea49ec80a7141c1c387ca76d.ctex"
+uid="uid://b7cnnlmbdvepq"
+path="res://.godot/imported/Rat_Idle0.png-d536eccd2cada5da686c5fe0766bebf3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Matt_Attack_0.png"
-dest_files=["res://.godot/imported/Matt_Attack_0.png-886fd911ea49ec80a7141c1c387ca76d.ctex"]
+source_file="res://assets/Rat_Idle0.png"
+dest_files=["res://.godot/imported/Rat_Idle0.png-d536eccd2cada5da686c5fe0766bebf3.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dmj4ovevxwkbu"]
+[gd_scene load_steps=21 format=3 uid="uid://cwl4l0u85mxgx"]
 
 [ext_resource type="Script" path="res://main_scene.gd" id="1_m25uy"]
 [ext_resource type="Texture2D" uid="uid://l2c7y1qinh00" path="res://assets/House.png" id="1_s5ggj"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bvvm6v746gnh8" path="res://assets/Matt_Daemon.png" id="3_kek8y"]
 [ext_resource type="Texture2D" uid="uid://vfd8r0cyab5d" path="res://assets/Matt_Walk_0.png" id="4_5fqrh"]
 [ext_resource type="Texture2D" uid="uid://dnd6morrlwdog" path="res://assets/Matt_Walk_1.png" id="5_l7m7n"]
+[ext_resource type="Texture2D" uid="uid://dgk0cjprrvjus" path="res://assets/Matt_Cook.png" id="5_pf2tv"]
 [ext_resource type="Texture2D" uid="uid://c3elbi8jboqjm" path="res://assets/Matt_Walk_2.png" id="6_3xd00"]
 [ext_resource type="Texture2D" uid="uid://nacaka1bxvkf" path="res://assets/Matt_Walk_3.png" id="7_ynv1w"]
 [ext_resource type="Script" path="res://AttackArea2D.gd" id="9_18u7f"]
@@ -17,6 +18,14 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2xwxc"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_pf2tv")
+}],
+"loop": true,
+"name": &"cook",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_kek8y")
@@ -89,8 +98,7 @@ scale = Vector2(1, 1.00476)
 position = Vector2(-7, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_2xwxc")
-animation = &"stand"
-frame_progress = 0.782877
+animation = &"cook"
 offset = Vector2(0, -170)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Player"]

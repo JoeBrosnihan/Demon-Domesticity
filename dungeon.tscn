@@ -1,13 +1,21 @@
-[gd_scene load_steps=38 format=3 uid="uid://kp4beiiqq10x"]
+[gd_scene load_steps=46 format=3 uid="uid://c0w26xqa0gwvt"]
 
 [ext_resource type="Script" path="res://dungeon.gd" id="1_e4xab"]
 [ext_resource type="Script" path="res://rat.gd" id="1_eepn5"]
 [ext_resource type="Texture2D" uid="uid://324eqdvaocw8" path="res://assets/Rat.png" id="2_78yj6"]
 [ext_resource type="Script" path="res://player.gd" id="3_62km5"]
+[ext_resource type="Texture2D" uid="uid://b7cnnlmbdvepq" path="res://assets/Rat_Idle0.png" id="3_lqtba"]
+[ext_resource type="Texture2D" uid="uid://b3wqx1j1qf0l6" path="res://assets/Rat_Idle1.png" id="4_4wf4b"]
+[ext_resource type="Texture2D" uid="uid://b551q6eand7c6" path="res://assets/Matt_Hurt.png" id="4_dynye"]
+[ext_resource type="Texture2D" uid="uid://c866v05flrb3j" path="res://assets/Matt_Attack_1.png" id="4_hejwg"]
 [ext_resource type="Texture2D" uid="uid://bvvm6v746gnh8" path="res://assets/Matt_Daemon.png" id="4_ro4n4"]
 [ext_resource type="Script" path="res://Timer.gd" id="4_xseph"]
 [ext_resource type="Texture2D" uid="uid://vfd8r0cyab5d" path="res://assets/Matt_Walk_0.png" id="5_24n3m"]
+[ext_resource type="Script" path="res://TimerText.gd" id="5_f3mmi"]
+[ext_resource type="Texture2D" uid="uid://nb8unn4au3f" path="res://assets/Matt_Attack_0.png" id="5_i5m1h"]
+[ext_resource type="Texture2D" uid="uid://bopdcb3klklin" path="res://assets/Rat_Idle2.png" id="5_vpvot"]
 [ext_resource type="Texture2D" uid="uid://dnd6morrlwdog" path="res://assets/Matt_Walk_1.png" id="6_nd5l7"]
+[ext_resource type="Texture2D" uid="uid://cf63hrp2kuc0o" path="res://assets/Rat_Ow.png" id="6_vx103"]
 [ext_resource type="Texture2D" uid="uid://c3elbi8jboqjm" path="res://assets/Matt_Walk_2.png" id="7_koope"]
 [ext_resource type="Texture2D" uid="uid://nacaka1bxvkf" path="res://assets/Matt_Walk_3.png" id="8_8n7qt"]
 [ext_resource type="Script" path="res://AttackArea2D.gd" id="8_kg7w4"]
@@ -15,9 +23,14 @@
 [ext_resource type="Texture2D" uid="uid://xi4enwyaen62" path="res://assets/Dungeon.png" id="9_uvdhx"]
 [ext_resource type="Script" path="res://WizardEyes.gd" id="9_w8x6i"]
 [ext_resource type="Texture2D" uid="uid://ch2o0bdtmo5eu" path="res://assets/Eyes_1.png" id="10_bqt0t"]
-[ext_resource type="Texture2D" uid="uid://d1sfest7ta2ph" path="res://assets/Eyes_2.png" id="11_1ek3b"]
+[ext_resource type="AudioStream" uid="uid://cm0y28g7m7mce" path="res://assets/Hells_Kitchen_Draft_1.mp3" id="10_lrsj0"]
+[ext_resource type="Texture2D" uid="uid://dt7gnrvicg08" path="res://assets/Matt_Walk_Pan0.png" id="10_xk4xs"]
+[ext_resource type="Texture2D" uid="uid://ctqrqw83lou7a" path="res://assets/Eyes_2.png" id="11_1ek3b"]
+[ext_resource type="Texture2D" uid="uid://dl4panhx3tkco" path="res://assets/Matt_Walk_Pan1.png" id="11_bac4e"]
 [ext_resource type="Texture2D" uid="uid://7atc5d1y5r8c" path="res://assets/man-screaming.png" id="11_j5hk5"]
-[ext_resource type="Texture2D" uid="uid://q6lnxpe4l1kd" path="res://assets/Timer.png" id="12_yw0ln"]
+[ext_resource type="Texture2D" uid="uid://cu36537xcc2jm" path="res://assets/Matt_Walk_Pan2.png" id="12_svl0k"]
+[ext_resource type="Texture2D" uid="uid://brbugdrfs66yp" path="res://assets/Timer.png" id="12_yw0ln"]
+[ext_resource type="Texture2D" uid="uid://cu6ordthum8rb" path="res://assets/Matt_Walk_Pan3.png" id="13_3xeeu"]
 [ext_resource type="Texture2D" uid="uid://bmlk0hpgnor45" path="res://assets/TorchFire_0.png" id="13_58wqr"]
 [ext_resource type="AudioStream" uid="uid://d3gajaluis4en" path="res://assets/Wizard Dialog.wav" id="13_g514e"]
 [ext_resource type="Texture2D" uid="uid://qmv4vcttfs3u" path="res://assets/TorchFire_1.png" id="14_ncl1j"]
@@ -27,8 +40,56 @@
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ilde6"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_idb8p"]
+radius = 4.5
+height = 68.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_27uyt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_lqtba")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4wf4b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vpvot")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_vx103")
+}],
+"loop": true,
+"name": &"ow",
+"speed": 5.0
+}]
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_2xwxc"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_hejwg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_i5m1h")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_dynye")
+}],
+"loop": true,
+"name": &"ow",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("4_ro4n4")
@@ -52,6 +113,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_xk4xs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_bac4e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_svl0k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_3xeeu")
+}],
+"loop": true,
+"name": &"walk_pan",
 "speed": 10.0
 }]
 
@@ -219,7 +297,6 @@ script = ExtResource("1_e4xab")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(6, -60)
 offset = Vector2(2.08165e-12, -50)
-zoom = Vector2(0.5, 0.5)
 limit_left = -500
 limit_top = -500
 limit_right = 500
@@ -232,6 +309,29 @@ editor_draw_limits = true
 z_index = 1
 y_sort_enabled = true
 
+[node name="Rat" type="RigidBody2D" parent="Entities"]
+position = Vector2(-328, -177)
+lock_rotation = true
+script = ExtResource("1_eepn5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Rat"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_idb8p")
+
+[node name="Visual" type="Node2D" parent="Entities/Rat"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Entities/Rat/Visual"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_78yj6")
+offset = Vector2(0, -39)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Entities/Rat/Visual"]
+position = Vector2(16, 136)
+scale = Vector2(0.63, 0.63)
+sprite_frames = SubResource("SpriteFrames_27uyt")
+animation = &"idle"
+frame_progress = 0.225863
+
 [node name="Player" type="CharacterBody2D" parent="Entities"]
 position = Vector2(3, 8)
 script = ExtResource("3_62km5")
@@ -242,7 +342,8 @@ script = ExtResource("3_62km5")
 position = Vector2(-7, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_2xwxc")
-animation = &"walk"
+animation = &"attack"
+frame_progress = 0.983459
 offset = Vector2(0, -170)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Player"]
@@ -267,7 +368,7 @@ scale = Vector2(0.63, 0.63)
 sprite_frames = SubResource("SpriteFrames_fj0r8")
 animation = &"blink"
 autoplay = "blink"
-frame_progress = 0.127774
+frame_progress = 0.838858
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/WizardEyes"]
 position = Vector2(-28, 15)
@@ -344,7 +445,7 @@ scale = Vector2(0.63, 0.63)
 sprite_frames = SubResource("SpriteFrames_v8pe0")
 animation = &"flicker"
 autoplay = "flicker"
-frame_progress = 0.56659
+frame_progress = 0.918881
 
 [node name="Timer" type="Node2D" parent="Entities"]
 visible = false
