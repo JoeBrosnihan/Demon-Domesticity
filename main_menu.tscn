@@ -17,3 +17,5 @@ offset_right = 1025.0
 offset_bottom = 673.0
 text = "Start"
 script = ExtResource("2_43mnx")
+
+[connection signal="pressed" from="StartButton" to="StartButton" method="_on_pressed"]

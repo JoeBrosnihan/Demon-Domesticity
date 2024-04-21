@@ -69,10 +69,10 @@ animations = [{
 [sub_resource type="SpriteFrames" id="SpriteFrames_2xwxc"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 2.0,
 "texture": ExtResource("4_hejwg")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": ExtResource("5_i5m1h")
 }],
 "loop": true,
@@ -331,7 +331,7 @@ position = Vector2(-7, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_2xwxc")
 animation = &"attack"
-frame_progress = 0.983459
+frame_progress = 0.497339
 offset = Vector2(0, -170)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Player"]
@@ -345,6 +345,9 @@ script = ExtResource("8_kg7w4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Player/AttackArea2D"]
 position = Vector2(0, -80)
 shape = SubResource("RectangleShape2D_cn1t8")
+
+[node name="AttackCooldown" type="Timer" parent="Entities/Player"]
+wait_time = 0.5
 
 [node name="WizardEyes" type="CharacterBody2D" parent="Entities"]
 position = Vector2(643, -400)
@@ -537,3 +540,5 @@ position = Vector2(-16, -268)
 
 [node name="RatSpawn3" type="StaticBody2D" parent="Node2D"]
 position = Vector2(400, -270)
+
+[connection signal="timeout" from="Entities/Player/AttackCooldown" to="Entities/Player" method="_on_attack_cooldown_timeout"]
