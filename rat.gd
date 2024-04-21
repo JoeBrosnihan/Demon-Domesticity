@@ -17,7 +17,8 @@ func _ready():
 	# Assuming the player node is named "Player" and is at the root of your scene
 	player = get_node("/root/Dungeon/Entities/Player")
 	print("player:", player)
-	sprite = find_child("Visual")
+	var forbis = find_child("Node2D")
+	sprite = find_child("Visual").find_child("AnimatedSprite2D")
 	original_color = sprite.modulate
 
 func _integrate_forces(state):
@@ -30,7 +31,7 @@ func _integrate_forces(state):
 			
 
 	if linear_velocity.x != 0:
-		find_child("Visual").scale.x = sign(linear_velocity.x)
+		sprite.scale.x = sign(linear_velocity.x) * abs(sprite.scale.x)
 		
 func die():
 	find_child("CollisionShape2D").disabled = true

@@ -1,8 +1,7 @@
-[gd_scene load_steps=46 format=3 uid="uid://c0w26xqa0gwvt"]
+[gd_scene load_steps=49 format=3 uid="uid://dtq26kt8g0m7f"]
 
 [ext_resource type="Script" path="res://dungeon.gd" id="1_e4xab"]
 [ext_resource type="Script" path="res://rat.gd" id="1_eepn5"]
-[ext_resource type="Texture2D" uid="uid://324eqdvaocw8" path="res://assets/Rat.png" id="2_78yj6"]
 [ext_resource type="Script" path="res://player.gd" id="3_62km5"]
 [ext_resource type="Texture2D" uid="uid://b7cnnlmbdvepq" path="res://assets/Rat_Idle0.png" id="3_lqtba"]
 [ext_resource type="Texture2D" uid="uid://b3wqx1j1qf0l6" path="res://assets/Rat_Idle1.png" id="4_4wf4b"]
@@ -11,19 +10,17 @@
 [ext_resource type="Texture2D" uid="uid://bvvm6v746gnh8" path="res://assets/Matt_Daemon.png" id="4_ro4n4"]
 [ext_resource type="Script" path="res://Timer.gd" id="4_xseph"]
 [ext_resource type="Texture2D" uid="uid://vfd8r0cyab5d" path="res://assets/Matt_Walk_0.png" id="5_24n3m"]
-[ext_resource type="Script" path="res://TimerText.gd" id="5_f3mmi"]
-[ext_resource type="Texture2D" uid="uid://nb8unn4au3f" path="res://assets/Matt_Attack_0.png" id="5_i5m1h"]
+[ext_resource type="Texture2D" uid="uid://cheyj7321aybh" path="res://assets/Matt_Attack_0.png" id="5_i5m1h"]
 [ext_resource type="Texture2D" uid="uid://bopdcb3klklin" path="res://assets/Rat_Idle2.png" id="5_vpvot"]
 [ext_resource type="Texture2D" uid="uid://dnd6morrlwdog" path="res://assets/Matt_Walk_1.png" id="6_nd5l7"]
 [ext_resource type="Texture2D" uid="uid://cf63hrp2kuc0o" path="res://assets/Rat_Ow.png" id="6_vx103"]
 [ext_resource type="Texture2D" uid="uid://c3elbi8jboqjm" path="res://assets/Matt_Walk_2.png" id="7_koope"]
 [ext_resource type="Texture2D" uid="uid://nacaka1bxvkf" path="res://assets/Matt_Walk_3.png" id="8_8n7qt"]
 [ext_resource type="Script" path="res://AttackArea2D.gd" id="8_kg7w4"]
-[ext_resource type="Texture2D" uid="uid://b466ckkmcrh6v" path="res://assets/Eyes_0.png" id="9_d3675"]
-[ext_resource type="Texture2D" uid="uid://xi4enwyaen62" path="res://assets/Dungeon.png" id="9_uvdhx"]
+[ext_resource type="Texture2D" uid="uid://cjsrogm2fnt6b" path="res://assets/Eyes_0.png" id="9_d3675"]
+[ext_resource type="Texture2D" uid="uid://cf3vaaqipnpgu" path="res://assets/Dungeon.png" id="9_uvdhx"]
 [ext_resource type="Script" path="res://WizardEyes.gd" id="9_w8x6i"]
-[ext_resource type="Texture2D" uid="uid://ch2o0bdtmo5eu" path="res://assets/Eyes_1.png" id="10_bqt0t"]
-[ext_resource type="AudioStream" uid="uid://cm0y28g7m7mce" path="res://assets/Hells_Kitchen_Draft_1.mp3" id="10_lrsj0"]
+[ext_resource type="Texture2D" uid="uid://cv2boxha6plkp" path="res://assets/Eyes_1.png" id="10_bqt0t"]
 [ext_resource type="Texture2D" uid="uid://dt7gnrvicg08" path="res://assets/Matt_Walk_Pan0.png" id="10_xk4xs"]
 [ext_resource type="Texture2D" uid="uid://ctqrqw83lou7a" path="res://assets/Eyes_2.png" id="11_1ek3b"]
 [ext_resource type="Texture2D" uid="uid://dl4panhx3tkco" path="res://assets/Matt_Walk_Pan1.png" id="11_bac4e"]
@@ -240,10 +237,6 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_idb8p"]
-radius = 4.5
-height = 68.0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1n0nd"]
 size = Vector2(887.302, 44.4444)
 
@@ -320,17 +313,12 @@ shape = SubResource("CapsuleShape2D_idb8p")
 
 [node name="Visual" type="Node2D" parent="Entities/Rat"]
 
-[node name="Sprite2D" type="Sprite2D" parent="Entities/Rat/Visual"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_78yj6")
-offset = Vector2(0, -39)
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Entities/Rat/Visual"]
-position = Vector2(16, 136)
+position = Vector2(-9, -21)
 scale = Vector2(0.63, 0.63)
 sprite_frames = SubResource("SpriteFrames_27uyt")
 animation = &"idle"
-frame_progress = 0.225863
+autoplay = "idle"
 
 [node name="Player" type="CharacterBody2D" parent="Entities"]
 position = Vector2(3, 8)
@@ -468,22 +456,6 @@ texture = ExtResource("12_yw0ln")
 
 [node name="Timer" type="Timer" parent="Entities/Timer"]
 
-[node name="Rat" type="RigidBody2D" parent="Entities"]
-position = Vector2(-328, -177)
-lock_rotation = true
-script = ExtResource("1_eepn5")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Rat"]
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_idb8p")
-
-[node name="Visual" type="Node2D" parent="Entities/Rat"]
-
-[node name="Sprite2D" type="Sprite2D" parent="Entities/Rat/Visual"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_78yj6")
-offset = Vector2(0, -39)
-
 [node name="Map" type="Sprite2D" parent="."]
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("9_uvdhx")
@@ -554,22 +526,6 @@ texture = ExtResource("11_j5hk5")
 [node name="RatContainer" type="Node2D" parent="."]
 process_mode = 4
 visible = false
-
-[node name="Rat" type="RigidBody2D" parent="RatContainer"]
-position = Vector2(-328, -177)
-lock_rotation = true
-script = ExtResource("1_eepn5")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RatContainer/Rat"]
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_idb8p")
-
-[node name="Visual" type="Node2D" parent="RatContainer/Rat"]
-
-[node name="Sprite2D" type="Sprite2D" parent="RatContainer/Rat/Visual"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_78yj6")
-offset = Vector2(0, -39)
 
 [node name="Node2D" type="Node2D" parent="."]
 
