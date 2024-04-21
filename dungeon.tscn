@@ -1,5 +1,6 @@
 [gd_scene load_steps=46 format=3 uid="uid://c0w26xqa0gwvt"]
 
+[ext_resource type="Script" path="res://dungeon.gd" id="1_e4xab"]
 [ext_resource type="Script" path="res://rat.gd" id="1_eepn5"]
 [ext_resource type="Texture2D" uid="uid://324eqdvaocw8" path="res://assets/Rat.png" id="2_78yj6"]
 [ext_resource type="Script" path="res://player.gd" id="3_62km5"]
@@ -17,9 +18,11 @@
 [ext_resource type="Texture2D" uid="uid://cf63hrp2kuc0o" path="res://assets/Rat_Ow.png" id="6_vx103"]
 [ext_resource type="Texture2D" uid="uid://c3elbi8jboqjm" path="res://assets/Matt_Walk_2.png" id="7_koope"]
 [ext_resource type="Texture2D" uid="uid://nacaka1bxvkf" path="res://assets/Matt_Walk_3.png" id="8_8n7qt"]
-[ext_resource type="Texture2D" uid="uid://cjsrogm2fnt6b" path="res://assets/Eyes_0.png" id="9_d3675"]
-[ext_resource type="Texture2D" uid="uid://cf3vaaqipnpgu" path="res://assets/Dungeon.png" id="9_uvdhx"]
-[ext_resource type="Texture2D" uid="uid://cv2boxha6plkp" path="res://assets/Eyes_1.png" id="10_bqt0t"]
+[ext_resource type="Script" path="res://AttackArea2D.gd" id="8_kg7w4"]
+[ext_resource type="Texture2D" uid="uid://b466ckkmcrh6v" path="res://assets/Eyes_0.png" id="9_d3675"]
+[ext_resource type="Texture2D" uid="uid://xi4enwyaen62" path="res://assets/Dungeon.png" id="9_uvdhx"]
+[ext_resource type="Script" path="res://WizardEyes.gd" id="9_w8x6i"]
+[ext_resource type="Texture2D" uid="uid://ch2o0bdtmo5eu" path="res://assets/Eyes_1.png" id="10_bqt0t"]
 [ext_resource type="AudioStream" uid="uid://cm0y28g7m7mce" path="res://assets/Hells_Kitchen_Draft_1.mp3" id="10_lrsj0"]
 [ext_resource type="Texture2D" uid="uid://dt7gnrvicg08" path="res://assets/Matt_Walk_Pan0.png" id="10_xk4xs"]
 [ext_resource type="Texture2D" uid="uid://ctqrqw83lou7a" path="res://assets/Eyes_2.png" id="11_1ek3b"]
@@ -29,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://brbugdrfs66yp" path="res://assets/Timer.png" id="12_yw0ln"]
 [ext_resource type="Texture2D" uid="uid://cu6ordthum8rb" path="res://assets/Matt_Walk_Pan3.png" id="13_3xeeu"]
 [ext_resource type="Texture2D" uid="uid://bmlk0hpgnor45" path="res://assets/TorchFire_0.png" id="13_58wqr"]
+[ext_resource type="AudioStream" uid="uid://d3gajaluis4en" path="res://assets/Wizard Dialog.wav" id="13_g514e"]
 [ext_resource type="Texture2D" uid="uid://qmv4vcttfs3u" path="res://assets/TorchFire_1.png" id="14_ncl1j"]
 [ext_resource type="Texture2D" uid="uid://cxkpuw7if2kfq" path="res://assets/Summon_Circle_0.png" id="15_wp4um"]
 [ext_resource type="Texture2D" uid="uid://bsicgn1wpmqk7" path="res://assets/Summon_Circle_1.png" id="16_pwx17"]
@@ -131,6 +135,9 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hpe6a"]
 height = 44.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cn1t8"]
+size = Vector2(200, 200)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_fj0r8"]
 animations = [{
 "frames": [{
@@ -232,6 +239,16 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_idb8p"]
+radius = 4.5
+height = 68.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1n0nd"]
+size = Vector2(887.302, 44.4444)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5n6wt"]
+size = Vector2(1336.91, 60.7937)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ysro7"]
 animations = [{
 "frames": [{
@@ -270,16 +287,11 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1n0nd"]
-size = Vector2(887.302, 44.4444)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5n6wt"]
-size = Vector2(1336.91, 60.7937)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_tdvqq"]
 
 [node name="Dungeon" type="Node2D"]
 material = SubResource("CanvasItemMaterial_ilde6")
+script = ExtResource("1_e4xab")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(6, -60)
@@ -337,10 +349,19 @@ offset = Vector2(0, -170)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_hpe6a")
 
-[node name="Eyes" type="CharacterBody2D" parent="Entities"]
-position = Vector2(643, -400)
+[node name="AttackArea2D" type="Area2D" parent="Entities/Player"]
+scale = Vector2(0.998183, 1)
+script = ExtResource("8_kg7w4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Entities/Eyes"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Player/AttackArea2D"]
+position = Vector2(0, -80)
+shape = SubResource("RectangleShape2D_cn1t8")
+
+[node name="WizardEyes" type="CharacterBody2D" parent="Entities"]
+position = Vector2(643, -400)
+script = ExtResource("9_w8x6i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Entities/WizardEyes"]
 position = Vector2(-28, 13)
 scale = Vector2(0.63, 0.63)
 sprite_frames = SubResource("SpriteFrames_fj0r8")
@@ -348,10 +369,26 @@ animation = &"blink"
 autoplay = "blink"
 frame_progress = 0.838858
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Eyes"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/WizardEyes"]
 position = Vector2(-28, 15)
 scale = Vector2(3.32, 1)
 shape = SubResource("RectangleShape2D_foroq")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Entities/WizardEyes"]
+visible = false
+offset_left = -400.0
+offset_top = 50.0
+offset_right = 300.0
+offset_bottom = 218.0
+scale = Vector2(0.998919, 0.984862)
+theme_override_colors/default_color = Color(0.819608, 0.8, 1, 1)
+theme_override_font_sizes/normal_font_size = 30
+text = "Demon! I command you to clear my magical basement of these magical vermin!"
+fit_content = true
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="Entities/WizardEyes"]
+stream = ExtResource("13_g514e")
+volume_db = 1.0
 
 [node name="TorchFire3" type="CharacterBody2D" parent="Entities"]
 
@@ -409,13 +446,8 @@ animation = &"flicker"
 autoplay = "flicker"
 frame_progress = 0.918881
 
-[node name="SummonCircle" type="AnimatedSprite2D" parent="Entities"]
-scale = Vector2(0.63, 0.63)
-sprite_frames = SubResource("SpriteFrames_ysro7")
-animation = &"summon"
-autoplay = "summon"
-
 [node name="Timer" type="Node2D" parent="Entities"]
+visible = false
 position = Vector2(0, -1)
 script = ExtResource("4_xseph")
 
@@ -427,18 +459,29 @@ offset_right = -766.0
 offset_bottom = 437.0
 theme_override_font_sizes/normal_font_size = 28
 text = "00"
-script = ExtResource("5_f3mmi")
 
-[node name="Timer2" type="Sprite2D" parent="Entities/Timer"]
+[node name="TimerSprite" type="Sprite2D" parent="Entities/Timer"]
 position = Vector2(-793, 417)
 scale = Vector2(0.63, 0.63)
 texture = ExtResource("12_yw0ln")
 
 [node name="Timer" type="Timer" parent="Entities/Timer"]
-wait_time = 3.0
-one_shot = true
-autostart = true
-script = ExtResource("4_xseph")
+
+[node name="Rat" type="RigidBody2D" parent="Entities"]
+position = Vector2(-328, -177)
+lock_rotation = true
+script = ExtResource("1_eepn5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Rat"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_idb8p")
+
+[node name="Visual" type="Node2D" parent="Entities/Rat"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Entities/Rat/Visual"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_78yj6")
+offset = Vector2(0, -39)
 
 [node name="Map" type="Sprite2D" parent="."]
 scale = Vector2(0.6, 0.6)
@@ -488,9 +531,13 @@ scale = Vector2(0.999999, 0.999999)
 position = Vector2(-16.6207, 31.0787)
 shape = SubResource("RectangleShape2D_5n6wt")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="SummonCircle" type="AnimatedSprite2D" parent="Map"]
+sprite_frames = SubResource("SpriteFrames_ysro7")
+animation = &"summon"
+autoplay = "summon"
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_lrsj0")
-autoplay = true
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2(0, 57)
@@ -502,3 +549,34 @@ shape = SubResource("CircleShape2D_tdvqq")
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
 scale = Vector2(0.02, 0.02)
 texture = ExtResource("11_j5hk5")
+
+[node name="RatContainer" type="Node2D" parent="."]
+process_mode = 4
+visible = false
+
+[node name="Rat" type="RigidBody2D" parent="RatContainer"]
+position = Vector2(-328, -177)
+lock_rotation = true
+script = ExtResource("1_eepn5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RatContainer/Rat"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_idb8p")
+
+[node name="Visual" type="Node2D" parent="RatContainer/Rat"]
+
+[node name="Sprite2D" type="Sprite2D" parent="RatContainer/Rat/Visual"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_78yj6")
+offset = Vector2(0, -39)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="RatSpawn1" type="StaticBody2D" parent="Node2D"]
+position = Vector2(-356, -260)
+
+[node name="RatSpawn2" type="StaticBody2D" parent="Node2D"]
+position = Vector2(-16, -268)
+
+[node name="RatSpawn3" type="StaticBody2D" parent="Node2D"]
+position = Vector2(400, -270)
